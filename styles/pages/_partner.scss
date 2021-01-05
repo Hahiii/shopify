@@ -1,0 +1,52 @@
+.partner-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: $row-gap--mob;
+  background: url('/assets/images/bg_sprinkles.png');
+  background-size: 100% auto;
+
+  @include mq('desktop') {
+    padding-bottom: $row-gap--desktop;
+  }
+
+}
+
+.partner {
+  @include grid-wrapper;
+  padding-top: $wrapper-top;
+
+  &:last-child {
+    padding-top: 64px;
+
+    @include mq('desktop') {
+      padding-top: 80px;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__el {
+      @include grid-element-inline(2, 2, 3, 4, 6);
+      display: flex;
+      justify-content: flex-start;
+      padding: 16px 0;
+
+      a {
+        position: relative;
+        width: 100%;
+        height: auto;
+
+        img {
+          position: relative;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+.neohpedia {
+
+  &__headline {
+    margin-top: 2rem;
+  }
+
+  nav {
+    display: flex;
+    padding-right: $grid-outer-gutter--mobile;
+    padding-bottom: $grid-inner-gutter--mobile;
+    border-bottom: .5px solid $color-white-opacity;
+
+    @include mq('tablet') {
+      padding-right: $grid-outer-gutter--tablet;
+    }
+
+    @include mq('desktop') {
+      @include grid-wrapper;
+      width: auto;
+      padding-right: $grid-outer-gutter--desktop;
+    }
+
+    @include mq('desktop-large') {
+      padding-right: $grid-outer-gutter--desktop-wide;
+    }
+
+    .swiper-container {
+      position: relative;
+      width: 100%;
+
+      &::after {
+        position: absolute;
+        z-index: z('below-content');
+        top: 0;
+        right: 0;
+        width: 64px;
+        height: 100%;
+        content: '';
+        background: $gradient-subnav;
+      }
+    }
+
+    .swiper-slide {
+      cursor: pointer;
+      width: auto;
+    }
+
+    .swiper-slide-active {
+      padding-left: $grid-outer-gutter--mobile;
+
+      @include mq('tablet-small') {
+        padding-left: $grid-outer-gutter--tablet-absolute;
+      }
+
+      @include mq('desktop') {
+        padding-left: unset;
+      }
+    }
+
+    button {
+      white-space: nowrap;
+    }
+  }
+
+  &__content {
+    @include grid-wrapper;
+    padding-bottom: 80px;
+  }
+
+  &__article-content {
+    @include grid-wrapper;
+    display: none;
+    padding-top: 32px;
+    padding-bottom: $grid-outer-gutter--mobile;
+
+    @include mq('tablet') {
+      padding-bottom: $grid-inner-gutter--tablet;
+    }
+
+    @include mq('tablet') {
+      padding-bottom: $grid-inner-gutter--desktop;
+    }
+
+    &--active {
+      display: block;
+    }
+
+    a {
+      line-height: 164%;
+    }
+  }
+
+  &__sources-content {
+    @include grid-wrapper;
+    padding-top: 32px;
+    padding-bottom: 80px;
+  }
+
+  &__article-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+
+    h2 {
+      width: 100%;
+    }
+  }
+
+  &__article {
+    @include grid-element-inline(1, 1, 2, 2, 3);
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: 12px;
+    padding-right: 8px;
+    border-radius: 8px;
+    opacity: .9;
+    background-color: $color-bg-dark;
+    transition: opacity .16s linear;
+
+    &:hover {
+      opacity: 1;
+      transition: opacity .16s linear;
+    }
+
+    &__thumbnail {
+      position: relative;
+      width: grid-el-child(4, 1, $grid-inner-gutter--mobile);
+      min-width: 60px;
+      margin-right: 16px;
+      padding-top: grid-el-child(6, 1, $grid-inner-gutter--mobile, 32px);
+      background-color: $color-primary;
+      background-position: center center;
+      background-size: cover;
+
+      @include mq('tablet') {
+        width: grid-el-child(6, 1, $grid-inner-gutter--mobile);
+      }
+
+      img {
+        @include image-fit;
+      }
+    }
+
+    &__head {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    &__title {
+      cursor: pointer;
+      line-height: 140%;
+      margin-block-end: 0;
+    }
+  }
+}
+

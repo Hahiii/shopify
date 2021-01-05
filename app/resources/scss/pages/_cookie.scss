@@ -1,0 +1,75 @@
+.cookie {
+  @include font-secondary;
+  position: fixed;
+  z-index: z('cookie');
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  overflow: hidden;
+  right: $grid-outer-gutter--mobile;
+  bottom: calc(#{$logo-height-mob} + 12px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 48px);
+  width: calc(100% - #{$grid-outer-gutter--mobile} * 2);
+  height: auto;
+  border-radius: 6px;
+  opacity: 0;
+  color: $white;
+  background: $black;
+  box-shadow: $shadow-cookie;
+  transition: transform .32s cubic-bezier(.3, 0, .2, 1);
+
+  @include mq('tablet-small') {
+    right: $grid-inner-gutter--tablet;
+    width: grid-el-tab(6);
+  }
+
+  @include mq('tablet') {
+    bottom: $grid-inner-gutter--tablet;
+    width: grid-el-tab(6);
+  }
+
+  @include mq('desktop') {
+    right: $grid-inner-gutter--desktop;
+    bottom: $grid-inner-gutter--desktop;
+    width: grid-el-dtp(6);
+  }
+
+  @include mq('desktop-wide') {
+    right: $grid-inner-gutter--desktop-wide;
+    bottom: $grid-inner-gutter--desktop-wide;
+    width: grid-el-dtp(4);
+  }
+
+  &--hide {
+    transform: translateY(200px);
+    transition: transform .32s cubic-bezier(.3, 0, .2, 1);
+  }
+
+  button,
+  a,
+  p {
+    @include type-reg;
+    font-size: 13px;
+
+    @include mq('tablet-small') {
+      font-size: 14px;
+    }
+  }
+
+  a {
+    color: $color-primary;
+  }
+
+  p {
+    padding: 8px 12px;
+  }
+
+  button {
+    min-height: 100%;
+    margin-right: 0;
+    margin-left: 12px;
+    padding: 8px 12px;
+    color: $black;
+    background: $color-secondary;
+  }
+}

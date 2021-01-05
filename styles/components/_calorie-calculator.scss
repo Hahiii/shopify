@@ -1,0 +1,238 @@
+.challenges {
+  &__calculator {
+    $icon-width: 50px;
+    $calculator-max-width: 520px;
+    $row-height: 48px;
+
+    &__title {
+      //@include grid-wrapper;
+      //display: flex;
+      //justify-content: center;
+      //align-items: center;
+      //transform: skewY(-6deg);
+      //transform-origin: bottom left;
+      //height: 14vw;
+      //min-height: 7rem;
+      //margin-top: calc(#{tan(6deg)} * 100vw + 64px);
+      //margin-bottom: 50px;
+      //text-transform: uppercase;
+      //background-color: $color-primary;
+      //
+      //@include mq('tablet') {
+      //  transform: unset;
+      //  height: unset;
+      //  min-height: unset;
+      //  margin-top: 0;
+      //  text-transform: capitalize;
+      //  background-color: unset;
+      //}
+      @include grid-wrapper;
+
+      @media(max-width: #{ $tablet - 1px}) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: skewY(-6deg);
+        transform-origin: bottom left;
+        height: 14vw;
+        min-height: 7rem;
+        margin-top: calc(#{tan(6deg)} * 100vw + 64px);
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        background-color: $color-primary;
+      }
+
+      h1 {
+        @media(max-width: #{ $tablet - 1px}) {
+          font-size: 2.4rem;
+          margin-block-end: 0;
+        }
+      }
+    }
+
+    &__stats-row {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      max-width: $calculator-max-width;
+      min-height: $row-height;
+      margin-top: 16px;
+      border-radius: 4px;
+      background-color: $color-bg-dark;
+
+      @include mq('tablet') {
+        overflow: visible;
+      }
+
+      &--buttons {
+        @include mq('tablet') {
+          overflow: hidden;
+        }
+      }
+    }
+
+    &__icon {
+      @include font-primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 0;
+      cursor: default;
+      cursor: pointer;
+      user-select: none;
+      width: $icon-width;
+      font-size: 1rem;
+      line-height: 150%;
+      color: $color-secondary;
+
+      &:hover {
+        box-shadow: $shadow-cookie;
+      }
+
+      &:active {
+        box-shadow: inset 0px 0px 16px -2px $color-bg-light;
+      }
+    }
+
+    &__stats-content {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+      width: calc(100% - #{$icon-width * 2});
+    }
+
+    &__text {
+      @include font-primary;
+      user-select: none;
+      width: 100%;
+      margin-block-end: 0;
+
+      &__container {
+        display: flex;
+        align-items: center;
+        cursor: default;
+        width: 33%;
+        height: calc(100% - 10px);
+        padding: 0 12px;
+        text-align: center;
+
+        &-left {
+          border-left: $color-border 1px solid;
+          text-align: left;
+        }
+
+        &-right {
+          border-right: $color-border 1px solid;
+          text-align: right;
+        }
+
+        &-left-2 {
+          width: 11%;
+          min-width: 20px;
+          max-width: 60px;
+          border-right: $color-border 1px solid;
+          text-align: left;
+        }
+
+        &-right-2 {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    &__value {
+      @include font-primary;
+      width: 16%;
+      min-width: 30px;
+      max-width: 100px;
+      height: 100%;
+      padding: 0 12px;
+      outline: none;
+      border: 0;
+      font-size: 1rem;
+      text-align: right;
+      color: $color-primary;
+      background-color: $color-bg-primary-light;
+    }
+
+    &__btn-row {
+      display: flex;
+      justify-content: flex-start;
+      max-width: $calculator-max-width;
+      margin-top: 16px;
+
+      .btn {
+        width: 50%;
+        height: 48px;
+        text-transform: capitalize;
+      }
+    }
+
+    &__dropdown {
+      &__container {
+        &--alt {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    &__display {
+      display: flex;
+      box-sizing: border-box;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      max-width: 520px;
+      margin-top: 16px;
+
+      margin-bottom: 16px;
+      padding-top: 24px;
+      padding-right: $grid-inner-gutter--mobile;
+      padding-bottom: 24px;
+      padding-left: $grid-inner-gutter--mobile;
+      background-color: $color-bg-dark;
+
+      @include mq('tablet-small') {
+        width: calc(100% - #{$grid-outer-gutter--tablet * 2});
+        margin-left: $grid-outer-gutter--tablet;
+        padding-right: 0;
+        padding-left: 0;
+        border-radius: 4px;
+      }
+      @include mq('desktop') {
+        width: calc(100% - #{$grid-outer-gutter--desktop * 2});
+        margin-left: $grid-outer-gutter--desktop;
+      }
+      @include mq('desktop-wide') {
+        width: calc(100% - #{$grid-outer-gutter--desktop-wide * 2});
+        margin-left: $grid-outer-gutter--desktop-wide;
+      }
+
+      &__p {
+        cursor: default;
+        margin-block-end: 1.2rem;
+      }
+
+      &__h,
+      &__h span {
+        @include font-primary;
+        font-size: 3rem;
+        color: $color-primary;
+      }
+    }
+
+    &__button {
+      @include grid-wrapper;
+      box-sizing: border-box;
+      max-width: 520px;
+      margin-bottom: 24px;
+
+      @include mq('tablet-small') {
+        box-sizing: content-box;
+        width: calc(100% - #{$grid-outer-gutter--tablet * 2});
+      }
+    }
+  }
+}

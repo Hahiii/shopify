@@ -1,0 +1,88 @@
+.loader {
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: flex-start;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  padding-top: calc(#{$nav-padding-top + $logo-height-mob + $nav-padding-bottom} + 2rem);
+  background: $black;
+
+  &__headline {
+    @include grid-wrapper;
+    position: absolute;
+    z-index: -1;
+    // display: none;
+    float: left;
+    width: 100%;
+
+    h1 {
+      transform: translateY(50px);
+      width: 100%;
+      font-size: 14vw;
+      line-height: 98%;
+      text-align: left;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      word-wrap: break-word;
+      opacity: 0;
+      overflow-wrap: break-word;
+
+      &:first-child {
+        color: $color-secondary;
+      }
+
+      &:nth-child(2) {
+        color: $color-primary;
+      }
+
+      @include mq('tablet') {
+        line-height: 80%;
+        text-align: center;
+
+      }
+
+      @include mq('desktop') {
+        font-size: 10vw;
+      }
+    }
+
+    &--show {
+      @include grid-wrapper;
+      position: relative;
+      z-index: 1;
+      display: block;
+
+      h1 {
+        transform: translateY(0);
+        opacity: 1;
+        transition: opacity .24s linear, transform .48s ease-out;
+        will-change: transform;
+        @include mq('tablet') {
+          transform: translateY(10px);
+        }
+
+        &:nth-child(2) {
+          transition-delay: .16s;
+        }
+      }
+    }
+  }
+
+  &--hide {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .32s linear;
+  }
+
+  &--gone {
+    visibility: hidden;
+    display: none;
+    pointer-events: none;
+  }
+}

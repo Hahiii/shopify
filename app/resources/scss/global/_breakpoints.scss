@@ -1,0 +1,23 @@
+$mobile-small: 341px;
+$tablet-small: 501px;
+$tablet: 769px;
+$desktop: 1001px;
+
+$breakpoints: (
+        'mobile-med': $mobile-small,
+        'tablet-small': $tablet-small,
+        'tablet': $tablet,
+        'desktop': $desktop,
+        'desktop-wide': 1441px,
+);
+
+
+// https://codepen.io/okay_alex/pen/eXzNYK
+@mixin mq($width) {
+  @if map-has-key($breakpoints, $width) {
+    $width: map-get($breakpoints, $width);
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
+}

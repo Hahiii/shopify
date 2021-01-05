@@ -1,0 +1,36 @@
+.input__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    text-transform: uppercase;
+    color: $lightgrey;
+  }
+}
+
+.input,
+textarea {
+  box-sizing: border-box;
+  padding: 12px 16px;
+  outline: none;
+  border: 1px solid $lightgrey;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: $color-secondary;
+
+  &:focus {
+    border: 1px solid $color-secondary;
+  }
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}

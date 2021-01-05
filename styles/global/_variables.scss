@@ -1,0 +1,22 @@
+// nav and header
+
+$logo-height-small-mob: 48px;
+$logo-height-mob: 54px;
+$logo-height-tablet: 68px;
+$nav-padding-top: 10px; // extra padding between the header / nav and the content
+$nav-padding-bottom: 2px; // extra padding between the header / nav and the content
+// together, both the logo height and the nav-padding-top and nav-padding-bottom make the full nav height
+
+$page-padding-bottom: 60px;
+
+$row-gap--mob: 40px;
+$row-gap--desktop: 100px;
+
+$skewer-angle: 8deg;
+
+$cart-transition-time: .4s;
+
+$global-notification-height: 44px;
+
+// page-specific variables
+$calories-row-height: 48px;

@@ -1,0 +1,128 @@
+.faq {
+  @include grid-wrapper;
+  position: relative;
+
+
+  &__overview {
+    padding-bottom: 80px;
+  }
+
+  &__link {
+    cursor: pointer;
+    padding: 2rem 0 1rem;
+    border-bottom: 1px solid $color-secondary;
+
+    &:hover {
+      h3,
+      img {
+        transform: translateX(#{$grid-inner-gutter--mobile}) translateY(-3px);
+        opacity: .8;
+        transition: transform .24s ease-in, opacity .16s linear;
+
+        @include mq('tablet') {
+          transform: translateX(#{$grid-inner-gutter--tablet});
+        }
+
+        @include mq('desktop') {
+          transform: translateX(#{$grid-inner-gutter--desktop});
+        }
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+    h3 {
+      flex: 1;
+      cursor: pointer;
+      transition: transform .24s ease-out, opacity .16s linear;
+    }
+
+    img {
+      transform: translateY(-3px);
+      width: 10px;
+      height: 17px;
+      margin-right: $grid-inner-gutter--mobile;
+      transition: transform .24s ease-out, opacity .16s linear;
+
+      @include mq('tablet') {
+        margin-right: $grid-inner-gutter--tablet;
+      }
+
+      @include mq('desktop') {
+        margin-right: $grid-inner-gutter--desktop;
+      }
+    }
+  }
+}
+
+.faq-detail {
+
+  min-height: calc(100vh - 180px);
+  min-height: calc(var(--vh, 1vh) * 100 - 180px);
+
+  &__container {
+    @include grid-wrapper;
+    position: relative;
+    background: $color-bg-dark;
+  }
+
+  &__header {
+    @include grid-wrapper;
+    position: fixed;
+    z-index: z('site-body-above');
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 120px;
+    background: $black;
+    box-shadow: $cart-shadow;
+
+    button {
+      padding: 1rem 0;
+      color: $white;
+      transition: opacity .2s linear;
+    }
+
+    img {
+      transform: rotate(180deg);
+      margin-right: 1rem;
+      transition: transform .2s ease-in;
+    }
+
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(.5rem);
+        transition: transform .2s ease-out;
+      }
+
+      button {
+        opacity: .72;
+        transition: opacity .2s linear;
+      }
+    }
+  }
+
+  &__content {
+    padding-top: 180px;
+
+    @include mq('tablet') {
+      padding-top: 200px;
+    }
+
+    @include mq('desktop') {
+      padding-top: 220px;
+    }
+  }
+
+  &__end-fade {
+    height: 240px;
+    background: linear-gradient(0deg, $black 0%, $color-bg-dark 100%);
+  }
+}

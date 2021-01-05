@@ -1,0 +1,236 @@
+.btn {
+  /* Webkit / Chrome Specific CSS to remove tap
+  highlight color */
+  will-change: transform;
+
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &--lowercase {
+    text-transform: capitalize;
+  }
+
+  &--no-transform {
+    text-transform: initial;
+  }
+
+  &--fw {
+    width: 100%;
+  }
+
+  &--hide {
+    visibility: hidden;
+  }
+
+  &--inverted {
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
+
+    &:hover {
+      border: 1px solid $color-primary;
+      color: $color-primary;
+    }
+  }
+
+  &--chart {
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
+
+    &:hover {
+      border: 1px solid $white;
+      color: $white;
+    }
+  }
+
+  &--inverted-active {
+    border: 1px solid $color-primary;
+    color: $color-primary;
+  }
+
+  &--inverted-plain {
+    border: none;
+    color: $color-primary;
+  }
+
+  &__primary {
+    border: 0;
+    color: $white;
+    background-color: $color-primary;
+
+    &:hover {
+      transform: scale(.99);
+      opacity: .96;
+    }
+  }
+
+  &__dark {
+    border: 0;
+    color: $color-secondary;
+    background-color: $color-bg-dark;
+
+    &:hover {
+      transform: scale(.99);
+      opacity: .96;
+    }
+
+    &--selected {
+      border: 1px solid $color-primary;
+      color: $color-primary;
+    }
+  }
+
+  &__black {
+    color: $white;
+    background: $black;
+
+    &:hover {
+      transform: scale(.99);
+      opacity: .96;
+    }
+  }
+
+  &__amazon {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid $color-amazon;
+    font-size: .9rem;
+    text-align: center;
+    white-space: nowrap;
+    @include font-secondary;
+    color: $white;
+    //background: $color-bg-amazon;
+
+    @include mq('mobile') {
+      width: auto;
+    }
+
+    img {
+      margin-right: .5rem;
+    }
+  }
+
+  &__gold {
+    color: $color-primary;
+    background: $color-secondary;
+
+    &:hover {
+      transform: scale(.99);
+      opacity: .96;
+    }
+  }
+
+  &__red {
+    color: $white;
+    background: $color-primary;
+
+    &:hover {
+      transform: scale(.99);
+      opacity: .96;
+    }
+  }
+
+  &__row-container {
+    display: flex;
+    justify-content: flex-start;
+
+    .btn, a {
+      width: 100%;
+      margin-right: 16px;
+
+      @include mq('tablet-small') {
+        width: unset;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__flex-container {
+    display: flex;
+  }
+
+  &__cta {
+    @include font-primary;
+    padding: 8px 12px 6px;
+    border: 2px solid $color-primary;
+    border-radius: 5px;
+    line-height: unset;
+    color: $color-primary;
+    transition: opacity .32s linear;
+
+    &:hover {
+      opacity: .88;
+      transition: opacity .16s linear;
+    }
+
+    &--red {
+      border: 2px solid $color-primary;
+      color: $color-primary;
+    }
+
+    &--white {
+      border: 2px solid $color-secondary;
+      color: $color-secondary;
+    }
+
+
+    &--blue {
+      border: 2px solid $color-tertiary;
+      color: $color-tertiary;
+    }
+
+    &--pink {
+      border: 2px solid $color-pink;
+      color: $color-pink;
+
+    }
+
+    &--hide {
+      display: none;
+    }
+  }
+
+  &--disabled {
+    border-color: $color-bg-light;
+    // SORRY FOR THIS
+    background-color: $color-bg-light !important;
+    transition: opacity .32s linear, background-color .32s linear;
+
+    &:hover {
+      cursor: default;
+      opacity: 1;
+    }
+  }
+}
+
+.btn-text {
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  border: 0;
+  color: $white;
+  background: none;
+  transition: opacity .16s linear;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    opacity: .8;
+    transition: opacity .16s linear;
+  }
+
+  &--secondary {
+    color: $color-secondary;
+  }
+
+  &--active {
+    color: $color-primary;
+  }
+}

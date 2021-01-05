@@ -1,0 +1,47 @@
+$white: #fff;
+$black: #000;
+$black-transparent: rgba(0, 0, 0, 0);
+$white-transparent: rgba(255, 255, 255, 0);
+$lightgrey: #f9f9f9;
+
+$color-primary: #e74023;
+$color-secondary: #e8dac1;
+$color-secondary-opacity: rgba(232, 218, 193, .5);
+$color-tertiary: #6dafe1;
+$color-pink: #e5004f;
+$color-dark: rgba(196, 196, 196, .32);
+$color-bg-dark: #2b2525;
+
+$color-text-opacity: rgba(255, 255, 255, 0.25);
+
+$color-bg-dark-2: #121212;
+$color-bg-dark-3: #151515;
+$color-bg-dark-mid: #313235;
+$color-bg-light: #d7d7de;
+$color-bg-primary-light: rgba(231, 64, 35, .12);
+$color-bg-amazon: #232f3e;
+$color-amazon: #ff9900;
+
+$color-primary-hover: #db2809;
+
+$color-white-opacity: rgba(255, 255, 255, .45);
+$color-white-opacity-dark: rgba(255, 255, 255, .75);
+$color-black-opacity: rgba(0, 0, 0, .32);
+$color-black-opacity-dark: rgba(0, 0, 0, .75);
+$color-font-smoothing: 1px 1px 2px rgba(255, 255, 255, .4);
+
+$color-border: rgba(255, 255, 255, .12);
+$gradient-stage: linear-gradient(180deg, $white-transparent 60%, $black 100%);
+$gradient-bi-directional: linear-gradient(180deg, $black 0%, $black-transparent 60%, $black 100%);
+$gradient-bi-directional-rev: linear-gradient(180deg, $black 0%, $black-transparent 30%, $black 60%);
+$gradient-image: linear-gradient(180deg, $black-transparent 0%, $black 100%);
+$gradient-subnav: linear-gradient(90deg, $black-transparent 0%, $black 100%);
+$gradient-image-rev: linear-gradient(0deg, $black-transparent 0%, $black 100%);
+$gradient-dark: linear-gradient(180deg, #121212 0%, #1A1919 100%);
+
+$text-shadow: 0 4px 12px rgba(0, 0, 0, .16);
+$text-shadow-dark: 0 4px 12px rgba(0, 0, 0, .64);
+
+$modal-backdrop: linear-gradient(180deg, rgba(18, 18, 18, .8) 0%, rgba(26, 25, 25, .8) 100%);
+$nav-backdrop: linear-gradient(270.25deg, rgba(0, 0, 0, 0.9) 35.95%, rgba(0, 0, 0, 0) 99.74%);
+

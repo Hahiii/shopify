@@ -1,0 +1,168 @@
+.investors {
+  &__section {
+    @include grid-wrapper(('mobile', 'tablet-small'));
+    margin-bottom: 48px;
+
+    @include mq('desktop') {
+      padding-right: grid-el-dtp(1.5, $grid-outer-gutter--desktop);
+      padding-left: grid-el-dtp(1.5, $grid-outer-gutter--desktop);
+    }
+
+    @include mq('desktop-wide') {
+      padding-right: grid-el-dtp(1, $grid-outer-gutter--desktop-wide);
+      padding-left: grid-el-dtp(1, $grid-outer-gutter--desktop-wide);
+    }
+
+    h1 {
+      padding-bottom: 8px;
+      color: $color-secondary;
+    }
+  }
+
+  &__header {
+    text-align: left;
+    @include mq('tablet-small') {
+      text-align: center;
+    }
+  }
+
+  &__sub-headline {
+    font-size: 1rem;
+    text-align: left;
+
+
+    @include mq('tablet-small') {
+      text-align: center;
+    }
+  }
+
+
+  &__button {
+    width: 100%;
+
+    @include mq('tablet-small') {
+      width: unset;
+    }
+
+    button {
+      width: 100%;
+
+      @include mq('tablet-small') {
+        width: unset;
+      }
+    }
+
+    &--hero {
+      @include mq('tablet-small') {
+        width: 21rem;
+      }
+
+      button {
+        @include mq('tablet-small') {
+          width: 100%;
+        }
+      }
+    }
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__rich-text {
+    h2 {
+      font-size: 2.3rem;
+    }
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__documents {
+    margin-bottom: 56px;
+    padding-top: 16px;
+
+    &__header {
+      font-size: 2.5rem;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    &__button {
+      @include property-with-gutter('margin-right', null, 'inner');
+      width: grid-el-mob(6);
+      margin-bottom: 1.5rem;
+
+      @media (max-width: #{$tablet - 1px}) {
+        &:nth-child(even) {
+          margin-right: 0;
+        }
+      }
+
+      @include mq('tablet') {
+        width: grid-el-dtp(3.5);
+        margin-right: $grid-inner-gutter--desktop;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__invest-now {
+    margin-bottom: 100px;
+
+    &__header {
+      box-sizing: border-box;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      @include mq('tablet') {
+        padding-right: $grid-outer-gutter--tablet;
+        padding-left: $grid-outer-gutter--tablet;
+      }
+
+      @include mq('desktop') {
+        padding-right: grid-el-dtp(2, $grid-outer-gutter--desktop);
+        padding-left: grid-el-dtp(2, $grid-outer-gutter--desktop);
+      }
+
+      h2 {
+        font-size: 2.3rem;
+        text-align: center;
+      }
+
+      @media (max-width: #{$tablet - 1px}) {
+        display: flex;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+        transform: skewX(-#{7deg}) rotate(-#{7deg});
+        transform-origin: left top;
+        margin-top: 9rem;
+        margin-bottom: 2rem;
+        padding: 1.8rem $grid-outer-gutter--tablet;
+        background: $color-primary;
+
+        h2 {
+          margin-bottom: 0;
+          font-size: 38px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

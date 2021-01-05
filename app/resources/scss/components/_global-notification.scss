@@ -1,0 +1,167 @@
+.global-notification {
+  position: absolute;
+  z-index: z('nav');
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: $global-notification-height + 14px;
+  background: $gradient-dark;
+  box-shadow: $cart-shadow;
+  transition: max-height .3s linear;
+
+  &--hide {
+    max-height: 0;
+  }
+
+  &__inner {
+    @include nav-wrapper;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $global-notification-height;
+  }
+
+
+  &__text {
+    display: flex;
+    align-items: center;
+    color: $color-secondary;
+
+    @include mq('desktop') {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    p {
+      margin-right: .84rem;
+
+      margin-bottom: 0;
+      font-size: .84rem;
+      line-height: 130%;
+    }
+
+    a {
+      font-size: .84rem;
+      line-height: 130%;
+    }
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+  }
+
+  img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+
+.has-global-notification {
+  .content {
+    padding-top: $global-notification-height;
+  }
+
+
+  .home__scene canvas,
+  .bars__data__container,
+  .athlete-teaser__container {
+    transform: translateY($global-notification-height);
+  }
+
+  .crossbar {
+    @media(max-width: #{$tablet-small - 1px}) {
+      padding-top: 66px;
+    }
+  }
+}
+
+.has-global-notification-before-scroll {
+  .nav--desktop {
+    position: absolute;
+    top: $global-notification-height;
+  }
+
+  .cart__window__backdrop {
+    top: $logo-height-small-mob + $nav-padding-top + $nav-padding-bottom + $global-notification-height;
+
+    @include mq('mobile-med') {
+      top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + $global-notification-height;
+    }
+
+    @include mq('tablet') {
+      top: $logo-height-tablet + $nav-padding-top + $nav-padding-bottom + $global-notification-height;
+    }
+  }
+
+  .store__product-dropdown__container {
+    position: absolute;
+    top: -($logo-height-small-mob + $nav-padding-top + $nav-padding-bottom);
+
+
+    @include mq('mobile-med') {
+      top: -($logo-height-mob + $nav-padding-top + $nav-padding-bottom);
+    }
+
+    @include mq('tablet') {
+      position: static;
+      top: 0;
+    }
+  }
+
+  .cart__window {
+    top: $logo-height-small-mob + $nav-padding-top + $nav-padding-bottom + $global-notification-height;
+
+    @include mq('mobile-med') {
+      top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + $global-notification-height;
+    }
+
+
+    @include mq('tablet') {
+      top: $logo-height-tablet + $nav-padding-top + $nav-padding-bottom + $global-notification-height;
+
+    }
+  }
+
+  .store__tab-container {
+    padding-top: $logo-height-small-mob + $nav-padding-top + $nav-padding-bottom + 16px + $global-notification-height;
+
+    @include mq('mobile-med') {
+      padding-top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + 16px + $global-notification-height;
+    }
+
+    @include mq('tablet') {
+      padding-top: $logo-height-tablet + $nav-padding-top + $nav-padding-bottom + 16px + $global-notification-height;
+    }
+  }
+
+}
+
+.has-global-notification-leave {
+  .nav--desktop {
+    top: 0;
+    animation: notificationNavLeave .32s linear;
+  }
+}
+
+@keyframes notificationNavLeave {
+  from {
+    transform: translateY($global-notification-height);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.has-global-notification-enter {
+  .nav--desktop {
+    top: 0;
+    animation: notificationNavLeave .32s linear reverse;
+  }
+}

@@ -1,0 +1,167 @@
+@mixin shopfinderTextstyle {
+  @include font-secondary;
+  font-size: 1.15rem !important;
+
+  @include mq('desktop') {
+    font-size: 1.32rem !important;
+  }
+
+  @include mq('desktop-wide') {
+    font-size: 1.4rem !important;
+  }
+}
+
+#storelocatorwidget #storelocator-search-label, #storelocatorwidget #search_radius_text, #storelocatorwidget #storelocator-filter_text, #storelocatorwidget #storelocator-category_text, #storelocatorwidget #storelocator-filter_checkbox_text, #storelocatorwidget #storelocator-category_checkbox_text {
+  font-size: 1.15rem !important;
+  @include font-secondary;
+  text-transform: capitalize !important;
+
+  @include mq('desktop') {
+    font-size: 1.32rem !important;
+  }
+
+  @include mq('desktop-wide') {
+    font-size: 1.4rem !important;
+  }
+}
+
+.shopfinder {
+  padding-top: $wrapper-top-small;
+  padding-bottom: 80px;
+  @include grid-wrapper;
+
+
+  #storelocatorwidget-container {
+    width: 100% !important;
+  }
+
+  div#storelocator-wrapper {
+    position: relative;
+  }
+
+
+  div#storelocator-map_canvas,
+  div#storelocator-leftcolumn {
+    height: calc(100vh - #{$wrapper-top-small} - 52px - 20px - 204px);
+    @include mq('tablet') {
+      height: calc(100vh - #{$wrapper-top-small} - 52px - 20px - 32px);
+    }
+  }
+
+  div#storelocator-map_canvas {
+    left: 0% !important;
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    border: 0;
+    border-radius: 6px;
+
+    @include mq('tablet') {
+      width: 92% !important;
+    }
+  }
+
+  input#storelocator-search_address {
+    @include shopfinderTextstyle;
+    border: 0;
+    border-radius: 6px;
+    color: $black;
+    background: $white;
+
+    &::placeholder {
+      color: black;
+    }
+  }
+
+  #storelocatorwidget input#storelocator-search_address:focus, #storelocatorwidget input#storelocator-search_location:focus {
+    border: 0;
+  }
+
+  a#storelocator-nearby {
+    @include shopfinderTextstyle;
+    width: 100%;
+    margin-top: 16px !important;
+    margin-left: 0 !important;
+    border-radius: 6px !important;
+    opacity: .9;
+    color: $white !important;
+    transition: opacity .12s linear;
+
+    &:hover {
+      opacity: 1;
+      transition: opacity .12s linear;
+    }
+
+    @include mq('tablet') {
+      width: 100%;
+      margin-top: 0 !important;
+      margin-left: 10px !important;
+    }
+  }
+
+  #storelocator-leftcolumn A.storelocator-storename {
+    @include font-primary;
+    font-size: 1.30rem;
+    line-height: 164%;
+    color: $black;
+    margin-block-end: .52rem;
+
+    @include mq('desktop') {
+      font-size: 1.6rem;
+    }
+
+    @include mq('desktop-wide') {
+      font-size: 1.8rem;
+    }
+  }
+
+  .storelocator-store {
+    border: 0;
+    border-radius: 6px;
+    background: $color-secondary;
+
+    p {
+      color: $black;
+      @include shopfinderTextstyle;
+    }
+  }
+
+  span.fa.fa-list,
+  span.fa.fa-map-marker,
+  span.fa.fa-arrows,
+  span.fa.fa-arrow-right,
+  span.fa.fa-location-arrow {
+    display: none !important;
+  }
+
+  .storelocator-btn-danger,
+  .storelocator-btn-danger:active,
+  .storelocator-btn-danger:visited,
+  .storelocator-btn-danger:focus {
+    border: 0 !important;
+    border-radius: 6px !important;
+    background: $black !important;
+    @include shopfinderTextstyle;
+    transition: background .12s linear;
+
+    &:hover {
+      background-color: $color-primary !important;
+      transition: background .12s linear;
+    }
+  }
+
+  // Map
+
+  .mapboxgl-ctrl.mapboxgl-ctrl-group {
+    overflow: hidden;
+    border-radius: 6px;
+    background: $color-secondary;
+    box-shadow: none;
+  }
+
+  .mapboxgl-ctrl.mapboxgl-ctrl-attrib.mapboxgl-compact,
+  #storelocator-footer,
+  .mapboxgl-ctrl-attrib-inner {
+    display: none;
+  }
+}

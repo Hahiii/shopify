@@ -1,0 +1,232 @@
+.store {
+
+  &__overview {
+    box-sizing: border-box;
+    min-height: calc(100vh - #{$logo-height-tablet + $nav-padding-top + $nav-padding-bottom} - 161px);
+    padding-bottom: 80px;
+  }
+
+  &__top-container {
+    position: relative;
+    padding-top: $logo-height-small-mob + $nav-padding-top + $nav-padding-bottom;
+
+    @include mq('mobile-med') {
+      padding-top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom;
+    }
+  }
+
+  &__section {
+    @include grid-padding-top;
+    @include grid-wrapper;
+    width: 100%;
+    margin-top: 80px;
+
+    @include mq('tablet') {
+      margin-top: $logo-height-tablet + $nav-padding-top + $nav-padding-bottom;
+      padding-top: 0;
+    }
+
+    &--first {
+      @include mq('tablet') {
+        @include grid-padding-top;
+      }
+    }
+
+    &--only {
+      padding-top: 16px;
+    }
+
+    &--hide {
+      display: none;
+    }
+
+    &__header {
+      @include font-primary;
+      display: none;
+      margin-bottom: 18px;
+      padding-left: 12px;
+      font-size: 1.3rem;
+      line-height: 21px;
+      color: $color-primary;
+
+      @include mq('tablet') {
+        display: block;
+        width: calc(50% - #{$grid-inner-gutter--tablet / 2});
+      }
+
+      @include mq('desktop') {
+        width: calc(50% - #{$grid-inner-gutter--desktop / 2});
+      }
+
+      @include mq('desktop-wide') {
+        width: calc(50% - #{$grid-inner-gutter--desktop-wide / 2});
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__card {
+    user-select: none;
+
+    &--overview {
+      width: grid-el-mob(12);
+
+      @include mq('tablet') {
+        width: grid-el-tab(6);
+        margin-right: $grid-inner-gutter--tablet;
+      }
+
+      @include mq('desktop') {
+        width: grid-el-dtp(6);
+        margin-right: $grid-inner-gutter--desktop;
+      }
+
+      &:nth-child(2n) {
+        @include mq('tablet') {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &__flavours-text {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      hyphens: auto;
+      color: $color-secondary;
+      margin-block-end: 0;
+    }
+
+    &__flavours {
+      display: flex;
+
+      img {
+        overflow: hidden;
+        width: 32px;
+        height: 32px;
+        margin-left: 8px;
+        border-radius: 16px;
+
+        @include mq('tablet') {
+          width: 42px;
+          height: 42px;
+          border-radius: 21px;
+        }
+      }
+    }
+
+    &__flavours-container {
+      display: flex;
+      box-sizing: border-box;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 1rem 1rem .5rem;
+    }
+
+
+    &__image {
+      position: relative;
+      width: 100%;
+      padding-top: 56%;
+      background-color: $color-bg-dark;
+
+      &__inner {
+        @include image-fit;
+        object-fit: contain;
+
+        &--cover {
+          object-fit: cover;
+        }
+      }
+    }
+
+    &__title {
+      margin-bottom: 0;
+      padding-left: 12px;
+      line-height: 28px;
+
+      &__container {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        margin-top: 16px;
+
+        h2 {
+          cursor: pointer;
+        }
+      }
+
+      &__price {
+        margin-bottom: 0;
+        padding-right: 12px;
+        color: $color-primary;
+      }
+    }
+
+    &__description {
+      margin-bottom: 0;
+      padding-left: 12px;
+      font-size: 15px;
+      line-height: 26px;
+
+      p {
+        line-height: 160%;
+      }
+    }
+  }
+
+  &__tab {
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    width: 50%;
+
+    h3 {
+      cursor: pointer;
+    }
+
+    &--active {
+      h3 {
+        color: $color-primary;
+      }
+    }
+
+    &-container {
+      @include grid-padding-top;
+      @include grid-wrapper(('mobile', 'tablet-small'));
+      position: fixed;
+      z-index: z('site-body-above');
+      display: flex;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      background-color: $color-bg-dark-2;
+      @include mq('tablet') {
+        display: none
+      }
+
+      img {
+        width: 48px;
+        height: auto;
+
+        @include mq('tablet') {
+          width: 54px;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,41 @@
+.imprint {
+  padding-top: 60px;
+
+  @include mq('desktop') {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__container {
+    @include grid-wrapper;
+    @include grid-padding-top;
+    padding-bottom: 80px;
+  }
+
+  h1 {
+    margin-block-end: 2.12rem;
+    @include mq('desktop') {
+      width: 100%;
+    }
+  }
+
+  &__el-flex {
+    @include mq('desktop') {
+      width: grid-el-dtp-child(9, 4);
+      margin-bottom: 48px;
+
+      &:nth-child-of-type(odd) {
+        margin-right: $grid-inner-gutter--desktop;
+      }
+    }
+  }
+}
+
+.privacy {
+  padding-top: 60px;
+  word-break: break-word;
+}
+

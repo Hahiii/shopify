@@ -1,0 +1,15 @@
+.btn {
+  @include font-primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 7px 20px;
+  outline: none;
+  border: 2px solid $black;
+  border-radius: 5px;
+  line-height: 28px;
+  background: none;
+  transition: transform .28s ease, opacity .28s ease, border-color .45s ease, background-color .45s ease;
+}

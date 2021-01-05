@@ -1,0 +1,66 @@
+.footer {
+  @include grid-wrapper;
+  position: relative;
+  z-index: z('content');
+  width: 100%;
+  padding-top: calc(#{$logo-height-small-mob / 2} + 1.6rem);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: $black;
+
+  @include mq('mobile-med') {
+    padding-top: calc(#{$logo-height-mob / 2} + 1.6rem);
+  }
+
+  @include mq('tablet') {
+    padding-top: calc(#{$logo-height-tablet / 2} + 1.6rem);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  }
+
+  &--primary {
+    background: $color-primary;
+  }
+
+  &__logo {
+    @include property-with-gutter('left', null, 'outer');
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    height: $logo-height-small-mob;
+
+    @include mq('mobile-med') {
+      height: $logo-height-mob;
+    }
+
+    @include mq('tablet') {
+      height: $logo-height-tablet;
+    }
+  }
+
+  &__links-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 16px;
+
+    &:last-child {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__link {
+    @include font-primary;
+    margin-right: 24px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: $color-secondary;
+
+    &_last-child {
+      margin-right: 0;
+    }
+
+    &--secondary {
+      opacity: .4;
+    }
+  }
+}

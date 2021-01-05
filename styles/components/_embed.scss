@@ -1,0 +1,37 @@
+.embed {
+  &__ig {
+    iFrame {
+      max-width: unset !important;
+    }
+  }
+
+  &__yt {
+    iFrame {
+      width: 100%;
+      height: calc((100vw - #{$grid-outer-gutter--mobile} * 2) / 16 * 9);
+      margin-bottom: 64px;
+      @include mq('tablet-small') {
+        height: calc((100vw - #{$grid-outer-gutter--tablet-absolute} * 2) / 16 * 9);
+      }
+      @include mq('desktop') {
+        height: calc((100vw - #{$grid-outer-gutter--desktop-absolute} * 2) / 16 * 9);
+        margin-bottom: 80px;
+      }
+    }
+  }
+
+  &__video,
+  &__img {
+    position: relative;
+    width: 100%;
+    margin-bottom: 64px;
+
+    @include mq('desktop') {
+      margin-bottom: 80px;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}

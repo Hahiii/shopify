@@ -1,0 +1,110 @@
+
+.challenges {
+  &__article {
+    $challenge__article: &;
+    display: flex;
+    overflow: hidden;
+    margin-top: 12px;
+    border-radius: 8px;
+    opacity: .74;
+    background-color: $color-bg-dark;
+    transition: opacity .1s;
+
+    @include mq('tablet') {
+      margin-top: 16px;
+    }
+
+    @include mq('desktop') {
+      margin-top: 20px;
+    }
+
+    @include mq('desktop-wide') {
+      max-width: 800px;
+      margin-top: 20px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--live {
+      position: relative;
+      opacity: 1;
+      background-color: $color-primary;
+
+      &:hover {
+        animation: article-live-hover;
+        animation-duration: 1.2s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      &::after {
+        @include font-secondary;
+        @include type-s;
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        content: 'Live';
+        color: $color-secondary;
+      }
+
+      & #{$challenge__article}__thumbnail::after {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: '';
+        opacity: .24;
+        background-color: $color-primary;
+      }
+    }
+
+    &__thumbnail {
+      position: relative;
+      width: grid-el-child(6, 1, $grid-inner-gutter--mobile);
+      //height: 50px;
+      min-width: 50px;
+      margin-right: 16px;
+      background-position: center center;
+      background-size: cover;
+
+      @include mq('desktop') {
+        padding-top: grid-el-child(12, 1, $grid-inner-gutter--mobile, 32px);
+      }
+    }
+
+    &__head {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 16px 0;
+    }
+
+    &__title {
+      @include font-primary;
+      line-height: 130%;
+      color: $color-secondary;
+      margin-block-end: 2px;
+    }
+
+    &__subtitle {
+      line-height: 120%;
+      opacity: .74;
+      color: $color-secondary;
+      margin-block-end: 0;
+    }
+  }
+}
+
+@include keyframes(article-live-hover) {
+  from {
+    background-color: $color-primary;
+  }
+
+  to {
+    background: $color-primary-hover;
+  }
+}

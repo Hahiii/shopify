@@ -1,0 +1,306 @@
+// Grid Variables
+$grid-outer-gutter--mobile: 24px;
+$grid-outer-gutter--tablet: 8%;
+$grid-outer-gutter--desktop: 12%;
+$grid-outer-gutter--desktop-wide: 18%;
+$grid-outer-gutter--tablet-absolute: 8vw;
+$grid-outer-gutter--desktop-absolute: 14vw;
+
+$grid-columns: 12;
+
+$grid-inner-gutter--mobile: 24px;
+$grid-inner-gutter--tablet: 32px;
+$grid-inner-gutter--desktop: 40px;
+$grid-inner-gutter--desktop-wide: 54px;
+
+// Generic Grid & Nav Wrapper Classes
+@mixin nav-wrapper {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: $grid-outer-gutter--mobile;
+  padding-right: $grid-outer-gutter--mobile;
+
+  @include mq('tablet-small') {
+    padding-left: $grid-inner-gutter--tablet;
+    padding-right: $grid-inner-gutter--tablet;
+  }
+
+  @include mq('desktop') {
+    padding-left: $grid-inner-gutter--desktop;
+    padding-right: $grid-inner-gutter--desktop;
+  }
+
+  @include mq('desktop-wide') {
+    padding-left: $grid-inner-gutter--desktop-wide;
+    padding-right: $grid-inner-gutter--desktop-wide;
+  }
+}
+
+@mixin grid-wrapper($breakpoints: null) {
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: $grid-outer-gutter--mobile;
+    padding-right: $grid-outer-gutter--mobile;
+  }
+
+  @if (index($breakpoints, 'tablet-small') or $breakpoints == null) {
+    @include mq('tablet-small') {
+      padding-left: $grid-outer-gutter--tablet;
+      padding-right: $grid-outer-gutter--tablet;
+    }
+  }
+
+  @if (index($breakpoints, 'tablet') or $breakpoints == null) {
+    @include mq('tablet') {
+      padding-left: $grid-outer-gutter--tablet;
+      padding-right: $grid-outer-gutter--tablet;
+    }
+  }
+
+  @if (index($breakpoints, 'desktop') or $breakpoints == null) {
+    @include mq('desktop') {
+      padding-left: $grid-outer-gutter--desktop;
+      padding-right: $grid-outer-gutter--desktop;
+    }
+  }
+
+  @if (index($breakpoints, 'desktop-wide') or $breakpoints == null) {
+    @include mq('desktop-wide') {
+      padding-left: $grid-outer-gutter--desktop-wide;
+      padding-right: $grid-outer-gutter--desktop-wide;
+    }
+  }
+}
+
+@mixin grid-padding-top {
+  padding-top: $logo-height-small-mob + $nav-padding-top + $nav-padding-bottom + 16px;
+
+  @include mq('mobile-med') {
+    padding-top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + 16px;
+  }
+
+  @include mq('tablet') {
+    padding-top: $logo-height-tablet + $nav-padding-top + $nav-padding-bottom + 16px;
+  }
+}
+
+$wrapper-top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + 16px + 60px;
+$wrapper-top-small: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + 32px;
+
+
+@mixin grid-element-inline($el-mobile, $el-tablet-small, $el-tablet, $el-desktop, $el-desktop-wide) {
+  max-width: 100%;
+  width: calc((100% / #{$el-mobile} - #{$grid-inner-gutter--mobile} * (#{$el-mobile} - 1) / #{$el-mobile}));
+
+  margin-right: $grid-inner-gutter--mobile;
+
+  &:nth-of-type(#{$el-mobile}n) {
+    margin-right: 0;
+  }
+
+
+  @include mq('tablet-small') {
+    width: calc((100% / #{$el-tablet-small} - #{$grid-inner-gutter--tablet} * (#{$el-tablet-small} - 1) / #{$el-tablet-small}));
+    margin-right: $grid-inner-gutter--tablet;
+
+    &:nth-of-type(#{$el-mobile}n) {
+      margin-right: $grid-inner-gutter--tablet;
+    }
+
+    &:nth-of-type(#{$el-tablet-small}n) {
+      margin-right: 0;
+    }
+  }
+
+  @include mq('tablet') {
+    width: calc((100% / #{$el-tablet} - #{$grid-inner-gutter--tablet} * (#{$el-tablet} - 1) / #{$el-tablet}));
+    margin-right: $grid-inner-gutter--tablet;
+
+    &:nth-of-type(#{$el-tablet-small}n) {
+      margin-right: $grid-inner-gutter--tablet;
+    }
+
+    &:nth-of-type(#{$el-tablet}n) {
+      margin-right: 0;
+    }
+  }
+
+  @include mq('desktop') {
+    width: calc((100% / #{$el-desktop} - #{$grid-inner-gutter--desktop} * (#{$el-desktop} - 1) / #{$el-desktop}));
+    margin-right: $grid-inner-gutter--desktop;
+
+    &:nth-of-type(#{$el-tablet-small}n) {
+      margin-right: $grid-inner-gutter--desktop;
+    }
+
+
+    &:nth-of-type(#{$el-tablet}n) {
+      margin-right: $grid-inner-gutter--desktop;
+    }
+
+    &:nth-of-type(#{$el-desktop}n) {
+      margin-right: 0;
+    }
+  }
+
+
+  @include mq('desktop-wide') {
+    width: calc((100% / #{$el-desktop-wide} - #{$grid-inner-gutter--desktop-wide} * (#{$el-desktop-wide} - 1) / #{$el-desktop-wide}));
+    margin-right: $grid-inner-gutter--desktop-wide;
+
+
+    &:nth-of-type(#{$el-desktop}n) {
+      margin-right: $grid-inner-gutter--desktop-wide;
+    }
+
+    &:nth-of-type(#{$el-desktop-wide}n) {
+      margin-right: 0;
+    }
+  }
+}
+
+// Grid Element Function
+
+@function decimal-round($value) {
+  @return round($value * 1000) / 1000;
+}
+
+// formula for grid-el functions is refactored from:
+//@return calc((100% / #{$grid-columns} - #{$grid-inner-gutter--desktop} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-inner-gutter--desktop} * #{$cols});
+@function grid-el-dtp($cols, $mod: false) {
+  @if $mod {
+    @return calc(((100% / #{decimal-round($grid-columns / $cols)}) - #{(($grid-inner-gutter--desktop * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-inner-gutter--desktop * ($cols - 1))}) + #{$mod});
+  } @else {
+    @return calc((100% / #{decimal-round($grid-columns / $cols)}) - #{(($grid-inner-gutter--desktop * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-inner-gutter--desktop * ($cols - 1))});
+  }
+}
+
+@function grid-el-tab($cols, $mod: false) {
+  @if $mod {
+    @return calc(((100% / #{decimal-round($grid-columns / $cols)}) - #{(($grid-inner-gutter--tablet * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-inner-gutter--tablet * ($cols - 1))}) + #{$mod});
+  } @else {
+    @return calc((100% / #{decimal-round($grid-columns / $cols)}) - #{(($grid-inner-gutter--tablet * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-inner-gutter--tablet * ($cols - 1))});
+  }
+}
+
+@function grid-el-mob($cols, $mod: false) {
+  @if $mod {
+    @return calc(((100% / #{decimal-round($grid-columns / $cols)}) - #{(($grid-inner-gutter--mobile * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-inner-gutter--mobile * ($cols - 1))}) + #{$mod});
+  } @else {
+    @return calc((100% / #{decimal-round($grid-columns / $cols)}) - #{(($grid-inner-gutter--mobile * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-inner-gutter--mobile * ($cols - 1))});
+  }
+}
+
+@function grid-el-tab-absolute($cols) {
+  @return calc((100vw / #{$grid-columns} - #{$grid-inner-gutter--tablet} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-inner-gutter--tablet} * (#{$cols} - 1));
+}
+
+@function grid-el-mob-absolute($cols) {
+  @return calc((100vw / #{$grid-columns} - #{$grid-inner-gutter--mobile} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-inner-gutter--mobile} * (#{$cols} - 1));
+}
+
+@function grid-el-dtp-absolute($cols) {
+  @return calc((100vw / #{$grid-columns} - #{$grid-inner-gutter--desktop} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-inner-gutter--desktop} * (#{$cols} - 1));
+}
+
+//@function grid-el-child($parent-cols, $cols) {
+//  @return calc((100% / #{$parent-cols} - #{$grid-inner-gutter--desktop} / #{$parent-cols} * (#{$parent-cols} - 1)) * #{$cols} + #{$grid-inner-gutter--desktop} * (#{$cols} - 1));
+//}
+
+@function grid-el-child($parent-cols, $cols, $inner-gutter-value: $grid-inner-gutter--desktop, $mod: false) {
+  @if ($mod) {
+    @return calc(((100% / #{$parent-cols} - #{$inner-gutter-value / $parent-cols * ($parent-cols - 1)}) * #{$cols} + #{$inner-gutter-value * ($cols - 1)}) + (#{$mod}));
+  } @else {
+    @return calc(((100% / #{$parent-cols} - #{$inner-gutter-value / $parent-cols * ($parent-cols - 1)}) * #{$cols} + #{$inner-gutter-value * ($cols - 1)}));
+  }
+
+}
+
+// z-index hierarchy function
+// https://codepen.io/okay_alex/pen/xBVoxV
+@function z($name) {
+  @if index($z-indexes, $name) {
+    @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+  } @else {
+    @return null;
+  }
+}
+
+$z-indexes: (
+        'modal',
+        'modal-backdrop',
+        'toast',
+        'nav',
+        'below-nav',
+        'cookie',
+        'site-body-above',
+        'content',
+        'below-content',
+        'below-content-lower',
+        'bg'
+);
+
+@mixin image-fit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    height: auto;
+    min-height: 100%;
+  }
+}
+
+@mixin property-with-gutter($property, $breakpoints: null, $grid-gutter: 'outer') {
+  @debug $grid-gutter;
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    #{$property}: if($grid-gutter == 'outer', $grid-outer-gutter--mobile, $grid-inner-gutter--mobile);
+  }
+
+  @if (index($breakpoints, 'tablet-small') or $breakpoints == null) {
+    @include mq('tablet') {
+      #{$property}: if($grid-gutter == 'outer', $grid-outer-gutter--tablet, $grid-inner-gutter--tablet);
+    }
+  }
+
+  @if (index($breakpoints, 'desktop') or $breakpoints == null) {
+    @include mq('desktop') {
+      #{$property}: if($grid-gutter == 'outer', $grid-outer-gutter--desktop, $grid-inner-gutter--desktop);
+    }
+  }
+
+  @if (index($breakpoints, 'desktop-wide') or $breakpoints == null) {
+    @include mq('desktop-wide') {
+      #{$property}: if($grid-gutter == 'outer', $grid-outer-gutter--desktop-wide, $grid-inner-gutter--desktop-wide);
+    }
+  }
+}
+
+@mixin hide-scrollbars {
+  //Hide Scrollbar Madness across browsers
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  &::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+  }
+}
+
+@mixin bottom-headline-skewed {
+  // 1.7vw is the offset due to the angle
+  bottom: calc(#{$content-padding-bottom} - 12vw / 2 + -1px + 1.75vw);
+  @include mq('tablet-small') {
+    bottom: calc(#{$content-padding-bottom} - 14vw / 2 - 1px + 1.75vw);
+  }
+  @include mq('desktop') {
+    bottom: calc(#{$content-padding-bottom} - 7.2rem / 2 - 1px + 1.75vw);
+  }
+}

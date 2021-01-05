@@ -1,0 +1,48 @@
+.marquee {
+  position: relative;
+  overflow-x: hidden;
+  transform: skewY(-#{$skewer-angle});
+  transform-origin: top left;
+  width: 100vw;
+  max-width: 100%;
+  height: 8rem;
+  margin-top: calc(#{tan($skewer-angle)} * 100vw + 80px);
+  background-color: $color-primary;
+
+  &--hide {
+    opacity: 0;
+    transition: opacity .32s linear;
+  }
+
+  &__track {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 8rem;
+    white-space: nowrap;
+    animation: marquee 32s linear infinite;
+    will-change: transform;
+
+    h1 {
+      font-size: 2.1rem;
+      text-transform: uppercase;
+      color: $color-secondary;
+      margin-block-end: 0;
+    }
+  }
+
+  &--taster {
+    transform: unset;
+    transform-origin: top right;
+    margin-top: 4rem;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

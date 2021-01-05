@@ -1,0 +1,74 @@
+%navigation-button {
+  position: absolute;
+  z-index: z('content');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  top: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $color-white-opacity-dark;
+
+  transition: background .16s linear, opacity .32s linear;
+
+  &:hover {
+    background: $white;
+    transition: background .16s linear;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+%navigation-button--next {
+  display: flex;
+  right: $grid-outer-gutter--mobile;
+  left: auto;
+
+  @include mq('tablet-small') {
+    right: $grid-inner-gutter--tablet;
+  }
+
+  @include mq('desktop') {
+    right: $grid-inner-gutter--desktop;
+  }
+
+  @include mq('desktop-wide') {
+    right: $grid-inner-gutter--desktop-wide;
+  }
+
+  img {
+    transform: rotate(180deg);
+    width: auto;
+    height: 16px;
+    margin-left: 2px;
+  }
+}
+
+%navigation-button--prev {
+  display: flex;
+  right: auto;
+  left: $grid-outer-gutter--mobile;
+
+  @include mq('tablet-small') {
+    left: $grid-inner-gutter--tablet;
+  }
+
+  @include mq('desktop') {
+    left: $grid-inner-gutter--desktop;
+  }
+
+  @include mq('desktop-wide') {
+    left: $grid-inner-gutter--desktop-wide;
+  }
+
+  img {
+    height: 16px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+}

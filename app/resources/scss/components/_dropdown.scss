@@ -1,0 +1,309 @@
+$dropdown-selected-height: 38px;
+.dropdown {
+  position: relative;
+  border-radius: 4px;
+  font-size: 1rem;
+  opacity: 0;
+  background-color: $color-bg-dark;
+  transition: opacity .32s ease-in;
+
+  @include mq('tablet') {
+    border-radius: 4px;
+  }
+
+  &--error {
+    border: 1px solid $color-primary;
+  }
+
+  &--store {
+    border-radius: 4px;
+    background-color: $color-bg-dark-3;
+    @include mq('tablet') {
+      margin-top: 1rem;
+    }
+  }
+
+  &__toggle {
+    @include type-reg;
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .6rem 56px .6rem 24px;
+    color: $white;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--disabled {
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  &__menu {
+    @include hide-scrollbars;
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+    overflow-y: auto;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0px;
+    margin: -2px 0 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    list-style: none;
+    opacity: 0;
+    transition: opacity .2s ease, max-height .2s ease;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--show {
+      pointer-events: all;
+      max-height: 350px;
+      opacity: 1;
+    }
+
+    &--calories {
+      box-shadow: $cart-shadow;
+
+      @media(max-width: #{$tablet - 1px}) {
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: $gradient-dark;
+        box-shadow: $bottom-dropdown-fixed;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    user-select: none;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    color: $white;
+    background-color: $color-bg-dark;
+    clear: both;
+
+    &:hover {
+      background-color: $color-bg-dark-mid;
+    }
+
+    &--store {
+      padding: .6rem calc(#{$grid-outer-gutter--mobile} + 32px) .6rem $grid-outer-gutter--mobile;
+      background-color: $color-bg-dark-3;
+
+      @include mq('tablet') {
+        padding: .6rem calc(#{$grid-outer-gutter--mobile} + 32px) .6rem $grid-outer-gutter--mobile;
+      }
+    }
+
+    &--calories {
+      @include font-primary;
+      @include grid-wrapper;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      height: 56px;
+      border-bottom: 1px solid $color-secondary-opacity;
+      color: $color-secondary;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    &--active {
+      display: none;
+      // to set if needed
+    }
+
+    &__text {
+      @include font-primary;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      //width: calc(100% - 6rem);
+      width: 100%;
+      white-space: nowrap;
+
+      text-overflow: ellipsis;
+      margin-block-end: 0;
+
+      &__top {
+        @include font-secondary;
+        margin-bottom: 0;
+        font-size: 13px;
+        line-height: 18px;
+        color: $color-primary;
+      }
+
+      &__bottom {
+        @include font-primary;
+        margin-bottom: 0;
+        font-size: 17px;
+        line-height: 20px;
+        color: $white;
+      }
+    }
+
+    &__price {
+      @include font-primary;
+      position: relative;
+      top: 1px;
+      font-size: 18px;
+      text-align: right;
+      color: $color-primary;
+      margin-block-end: 0;
+    }
+
+    &__price-container {
+      margin-top: 13px;
+    }
+
+    &__sub-price {
+      font-size: .7rem;
+      line-height: .7rem;
+      text-align: right;
+      opacity: .5;
+      color: $white;
+      margin-block-end: 0;
+    }
+  }
+
+  &__selected {
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    line-height: 130%;
+    text-overflow: ellipsis;
+    margin-block-end: 0;
+
+    &--calories {
+      @include font-primary;
+      color: $color-secondary;
+    }
+
+    &--active {
+      color: $color-primary;
+    }
+  }
+
+  .caret {
+    position: absolute;
+    z-index: 2;
+    display: none;
+    top: calc(50% - 6px);
+    right: $grid-inner-gutter--mobile;
+    transform: rotate(-45deg);
+    transform-origin: 3px 8px;
+    width: 8px;
+
+    height: 8px;
+    margin-left: 10px;
+    border-bottom: 2px solid $white;
+
+    border-left: 2px solid $white;
+    vertical-align: middle;
+
+    transition: transform .5s ease;
+
+    margin-block-end: 0;
+
+    &--active {
+      transform: rotate(135deg);
+    }
+
+    &--calories {
+      top: 18px;
+      border-color: $color-secondary;
+    }
+  }
+
+  &__image,
+  &__image-placeholder {
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    margin-right: 16px;
+    border-radius: 6px;
+    object-fit: cover;
+
+    &--hide {
+      display: none;
+    }
+  }
+
+  &__image-special {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &--loaded {
+    opacity: 1;
+
+    .dropdown__image {
+      background-color: $white;
+    }
+
+    .caret {
+      display: block;
+    }
+  }
+
+  &--disabled {
+
+    .caret {
+      display: none;
+    }
+
+    .dropdown__toggle {
+      padding: .6rem 24px;
+    }
+  }
+
+  &__backdrop {
+    position: fixed;
+    z-index: z('content');
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    content: '';
+    opacity: 0;
+    background: $modal-backdrop;
+    transition: opacity .4s ease;
+
+    &--show {
+      pointer-events: all;
+      opacity: 1;
+
+      @include mq('tablet') {
+        opacity: 0;
+      }
+    }
+  }
+}

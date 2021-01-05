@@ -1,0 +1,27 @@
+.netcarbs {
+  position: relative;
+  z-index: z('content');
+  padding-bottom: 50px;
+  background: $black;
+
+  &__text-block {
+    @include grid-wrapper;
+  }
+
+  &__image-block {
+    margin-bottom: 64px;
+
+    @include mq('tablet') {
+      margin-bottom: 80px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &--square {
+      @include grid-wrapper;
+    }
+  }
+}

@@ -1,0 +1,212 @@
+.challenges {
+  &__overview {
+    padding-bottom: 52px;
+  }
+
+  &__section {
+    @include grid-wrapper;
+    margin-bottom: 60px;
+
+    h1 {
+      padding-bottom: 8px;
+      color: $color-secondary;
+    }
+  }
+
+  &__overview-header {
+    text-align: left;
+    @include mq('tablet-small') {
+      text-align: center;
+    }
+  }
+
+  &__wrapper {
+    @include grid-wrapper;
+  }
+
+  &__sub-headline {
+    text-align: left;
+
+    @include mq('tablet-small') {
+      text-align: center;
+    }
+  }
+
+  &__iframe {
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vw * 9 / 16);
+    object-fit: cover;
+    object-position: bottom;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      //max-height: 70vh;
+      margin-top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + 4px;
+
+      margin-bottom: 4rem;
+
+      @include mq('tablet') {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__hero-placeholder {
+    padding-top: calc(#{$logo-height-mob + $nav-padding-top + $nav-padding-bottom} + 1.5rem);
+
+    @include mq('tablet-small') {
+      padding-top: calc(#{$logo-height-tablet + $nav-padding-top + $nav-padding-bottom} + 1rem);
+    }
+  }
+
+  &__video {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vw / 16 * 9 + 10vh);
+    max-height: 70vh;
+    margin-top: $logo-height-mob + $nav-padding-top + $nav-padding-bottom + 4px;
+    margin-bottom: 38px;
+    background-color: $black;
+
+    @include mq('tablet-small') {
+      height: calc(100vw / 16 * 9);
+    }
+
+    @include mq('tablet') {
+      margin-top: 0;
+    }
+
+    &__blend {
+      &::after {
+        position: absolute;
+        z-index: z('bg');
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background: $black;
+        mix-blend-mode: color;
+      }
+    }
+
+    video {
+      position: absolute;
+      z-index: z('bg');
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &__mask {
+      position: absolute;
+      z-index: z('below-content');
+      overflow: hidden;
+      top: 100%;
+      transform: skewY(-#{$skewer-angle});
+      transform-origin: top left;
+      width: 100%;
+      height: 40vw;
+      background-color: $black;
+      backface-visibility: hidden;
+
+      @include mq('tablet') {
+        transform: unset;
+      }
+    }
+  }
+
+  &__mid-section {
+    &__image {
+      width: 100%;
+      object-fit: cover;
+
+      @include mq('tablet') {
+        margin-bottom: 36px;
+      }
+    }
+
+    &__container {
+      @include grid-wrapper(('tablet', 'desktop', 'desktop-wide'));
+    }
+  }
+
+  &__mid-title {
+    @include grid-wrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: $color-primary;
+
+    h3 {
+      opacity: .5;
+      color: $white;
+      margin-block-end: 0;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: z('site-above-content');
+  }
+
+  &__button {
+    width: 100%;
+
+    @include mq('tablet-small') {
+      width: unset;
+    }
+
+    button {
+      width: 100%;
+
+      @include mq('tablet-small') {
+        width: unset;
+      }
+    }
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  &__description {
+    margin-top: 32px;
+  }
+
+  &__nutrition {
+    &__image {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+      width: 100%;
+      margin-bottom: 1.6rem;
+
+      img {
+        display: inline-block;
+        //@include image-fit;
+        width: 25%;
+        height: 100%;
+      }
+    }
+  }
+}

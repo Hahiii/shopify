@@ -1,0 +1,661 @@
+$marquee-height: 8rem;
+.home {
+  &__bg {
+    background-color: $black;
+  }
+
+
+  &__hero {
+    position: relative;
+    z-index: 2;
+    //height: 99vw;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: calc(100vh - #{tan($skewer-angle)} * 100vw - #{$logo-height-mob + $mask-leeway});
+    min-height: 260px;
+    padding-top: calc(#{$nav-padding-top + $logo-height-mob + $nav-padding-bottom} + 2rem);
+    background-color: $black;
+    transition: opacity .32s linear;
+
+    @include mq('tablet') {
+      height: calc(100vh - #{tan($skewer-angle)} * 100vw - #{$logo-height-tablet + $mask-leeway});
+      //height: calc(100vh - #{tan($skewer-angle)} * 100vw - #{$paper-height + $mask-leeway});
+      min-height: 520px;
+      padding-top: calc(#{$nav-padding-top + $logo-height-tablet + $nav-padding-bottom } + 2rem);
+    }
+
+    @include mq('desktop') {
+      height: calc(100vh - #{tan($skewer-angle)} * 100vw);
+
+    }
+
+    &__content {
+      @include grid-wrapper;
+    }
+
+    &__award {
+      position: absolute;
+      z-index: 3;
+      top: 100%;
+      @include property-with-gutter('right', ('tablet', 'desktop'), 'outer');
+      left: 70%;
+      transform: translateY(-76%);
+
+
+      @include mq('tablet-small') {
+        right: $grid-outer-gutter--tablet;
+        left: unset;
+        transform: translateY(-50%);
+      }
+
+      @include mq('desktop') {
+        right: $grid-outer-gutter--desktop;
+      }
+
+      @include mq('desktop-wide') {
+        right: $grid-outer-gutter--desktop-wide;
+        transform: translateY(-25%);
+      }
+
+      @media screen and (orientation: landscape) and (max-width: 680px) {
+        display: none;
+      }
+
+      img {
+        width: 20vw;
+        max-width: 100px;
+        box-shadow: $award-shadow;
+
+        @include mq('tablet') {
+          max-width: 120px;
+        }
+
+        @include mq('desktop') {
+          max-width: 140px;
+        }
+
+        @include mq('desktop-wide') {
+          width: 6vw;
+          max-width: unset;
+        }
+      }
+    }
+
+    &__tag {
+      @include nav-wrapper;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      @media screen and (orientation: landscape) and (max-width: 680px) {
+        display: none;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        line-height: 100%;
+        text-transform: uppercase;
+        color: $color-primary;
+        @include mq('tablet-small') {
+          font-size: 2.4rem;
+        }
+        margin-block-end: 0;
+      }
+    }
+
+    &__bottom {
+      position: relative;
+      bottom: 100%;
+      //top: 100%;
+      transform: skewY(-#{$skewer-angle});
+      transform-origin: top right;
+      width: 100%;
+      height: 100%;
+      background-color: $black;
+      backface-visibility: hidden;
+
+      &__container {
+        position: absolute;
+        overflow: hidden;
+        top: 100%;
+        width: 100%;
+        height: calc(#{tan($skewer-angle)} * 100vw + 1px); // add 1px, just to make sure we have enough space
+      }
+    }
+
+    &__mobile-bar {
+      @include grid-wrapper;
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-4vh) translateX(-50%);
+      max-width: 120vmin;
+
+      @media(max-width: 400px) {
+        padding-right: 4px;
+        padding-left: 4px;
+      }
+
+      @include mq('tablet-small') {
+        transform: translateY(-9vh) translateX(-50%);
+        max-width: 100vmin;
+      }
+
+      &--hide {
+        display: none;
+      }
+
+      &__animation {
+        animation-name: float;
+        animation-duration: 5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      img {
+        transform: perspective(300px);
+        transform-origin: center center;
+        width: 100%;
+        max-width: 600px;
+        transition-duration: .1s;
+        transition-property: transform;
+        object-fit: cover;
+
+        @include mq('tablet-small') {
+          max-width: 78vmin;
+        }
+      }
+    }
+  }
+
+  &__headline {
+    width: 100%;
+    transition: transform .8s ease;
+
+    h1 {
+      position: relative;
+      top: -1rem;
+      width: 100%;
+      font-size: 14vw;
+      line-height: 100%;
+      text-align: left;
+      text-transform: uppercase;
+      word-wrap: break-word;
+      color: $color-secondary;
+      overflow-wrap: break-word;
+
+      @include mq('tablet') {
+        text-align: center;
+      }
+
+      @include mq('desktop') {
+        font-size: 10vw;
+      }
+    }
+
+    span {
+      color: $color-primary;
+    }
+
+  }
+
+  &__mid-section {
+    $paper-height: 12px;
+    $mask-leeway: 30px;
+    position: relative;
+    z-index: 1;
+
+    &--transparent {
+      z-index: 1;
+      pointer-events: none;
+      height: 140vh;
+      opacity: 0;
+      background-color: transparent;
+    }
+
+    // almost the same as &__top
+    &__bottom {
+      &__colour {
+        position: absolute;
+        top: 0;
+        transform: skewY(-#{$skewer-angle});
+        transform-origin: top left;
+        width: 100%;
+        height: 100%;
+        background-color: $color-primary;
+      }
+
+      &__container {
+        position: relative;
+        overflow: hidden;
+        height: calc(#{tan($skewer-angle)} * 100vw);
+      }
+    }
+
+    &__headline {
+      display: inline-flex;
+      align-items: flex-start;
+      flex-direction: column;
+      transform: skewY(-#{$skewer-angle});
+      transform-origin: top right;
+      margin-top: 20px;
+      line-height: 100%;
+      text-transform: uppercase;
+      color: $white;
+      transition: opacity .32s linear;
+
+      @include mq('tablet') {
+        margin-top: 24px;
+      }
+
+      @include mq('desktop') {
+        margin-top: 0;
+      }
+
+      @include mq('desktop-wide') {
+        margin-left: -$grid-outer-gutter--desktop-absolute;
+      }
+
+
+      &--fixed {
+        align-items: flex-end;
+        width: 100%;
+      }
+
+      &--hide {
+        opacity: 0;
+        transition: opacity .32s linear;
+      }
+
+      h3 {
+        font-size: 6vw;
+        line-height: 100%;
+        margin-block-end: 0;
+      }
+
+      h2 {
+        margin-left: 1vw;
+        font-size: 8vw;
+        line-height: 100%;
+      }
+
+    }
+
+    &__content {
+      @include grid-wrapper;
+      position: relative;
+      display: flex;
+      //justify-content: flex-start;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      //min-height: 100vh;
+      //min-height: 100%;
+      min-height: calc(100vh - #{$logo-height-mob});
+
+      //padding-top: calc(#{tan($skewer-angle)} * 100vw);
+
+      padding-top: calc(#{tan($skewer-angle)} * 100vw + 28px);
+      padding-bottom: calc(#{tan($skewer-angle)} * 100vw + #{$paper-height} + 1px + #{$marquee-height} + 12rem);
+      background-color: $color-primary;
+
+      @include mq('tablet') {
+        min-height: 100vh;
+      }
+
+      @media(orientation: landscape) and (min-width: $desktop) {
+        min-height: 760px;
+      }
+
+      &--black {
+        background-color: $black;
+        transition: background-color 0.24s linear;
+        transition-delay: .24s;
+      }
+
+      &--desktop {
+        //padding-top: calc(#{tan($skewer-angle)} * 80vw);
+      }
+
+      &--fixed {
+        position: fixed;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding-top: 24px;
+
+        @media screen and (orientation: landscape) and (max-width: 680px) {
+          padding-top: 0px;
+        }
+      }
+
+      &__inner {
+        padding-top: 28px;
+      }
+    }
+
+    &__text {
+      width: 60%;
+      margin-top: calc(8vh + 48px);
+      margin-left: 40%;
+
+      @include mq('tablet-small') {
+        width: 50%;
+        margin-top: 48px;
+        margin-left: 50%;
+      }
+
+      @include mq('desktop') {
+        width: 45%;
+        margin-top: 48px;
+        margin-left: 30vw;
+      }
+
+      @include mq('desktop-wide') {
+        margin-left: 54%;
+      }
+
+      &--hide {
+        opacity: 0;
+        transition: opacity .32s linear;
+      }
+
+      p {
+        @include font-secondary;
+        line-height: 164%;
+      }
+    }
+
+    &__bars-static {
+      position: absolute;
+      top: 10rem;
+      width: 60vh;
+      transition-delay: .2s;
+
+      @media(min-width: 400px) {
+        top: 11rem;
+
+      }
+
+      @include mq('tablet-small') {
+        width: 66vh;
+      }
+
+      &--hide {
+        display: none;
+      }
+
+      &__bar {
+        $parent-class: &;
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        transform: translateX(-12vw) rotateZ(-90deg) translateX(-100%);
+        transform-origin: left top;
+        width: 100%;
+        max-width: 600px;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+
+        @media(min-width: 360px) {
+          transform: translateX(-$grid-outer-gutter--mobile) rotateZ(-90deg) translateX(-96%);
+        }
+
+        @media(min-width: 460px) {
+          transform: translateX($grid-outer-gutter--mobile) rotateZ(-90deg) translateX(-96%);
+        }
+
+        @include mq('tablet-small') {
+          transform: translateX($grid-outer-gutter--tablet) rotateZ(-90deg) translateX(-106%);
+        }
+
+        &--show {
+          opacity: 1;
+        }
+
+
+        &__3 {
+          z-index: 1;
+          @include mq('tablet') {
+            transform: rotateZ(-40deg) translateX(-79%) translateY(130px);
+          }
+
+          &#{$parent-class}--show {
+            transition-delay: .6s;
+          }
+        }
+
+        &__2 {
+          z-index: 2;
+          top: 20px;
+          left: -20px;
+
+          @include mq('tablet-small') {
+            left: -30px;
+          }
+
+          @include mq('tablet') {
+            left: -40px;
+            transform: rotateZ(-26deg) translateX(-56%) translateY(250px);
+          }
+
+          &#{$parent-class}--show {
+            transition-delay: .4s;
+          }
+        }
+
+        &__1 {
+          z-index: 3;
+          top: 40px;
+          left: -40px;
+
+          @include mq('tablet-small') {
+            left: -60px;
+          }
+
+          @include mq('tablet') {
+            left: -80px;
+            transform: rotateZ(-10deg) translateX(-25%) translateY(330px);
+          }
+        }
+      }
+
+    }
+
+  }
+
+  &__end-section {
+    position: relative;
+    z-index: 3;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity .32s linear;
+    // commented out for marquee
+    //margin-top: -15vw;
+
+    &__top {
+      position: absolute;
+      //top: calc(100% - #{$paper-height} - #{$mask-leeway});
+
+      // marquee
+      top: calc(100% - #{$paper-height} - 8rem);
+
+      transform: skewY(-#{$skewer-angle});
+      transform-origin: top left;
+      width: 100%;
+      height: 100%;
+      background-color: $black;
+
+      &__colour {
+        position: relative;
+        top: $paper-height;
+        width: 100%;
+        height: 25vw;
+        background: $black;
+        backface-visibility: hidden;
+      }
+
+      &__container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        //height: calc(#{tan($skewer-angle)} * 100vw + #{$paper-height} + #{$mask-leeway} + 1px); // add 1px, just to make sure we have enough space
+
+        // marquee
+        height: calc(#{tan($skewer-angle)} * 100vw + #{$paper-height} + 1px + #{$marquee-height}); // add 1px, just to make sure we have enough space
+        margin-top: calc(#{tan(-$skewer-angle)} * 100vw - #{$paper-height} - 1px - #{$marquee-height}); // add 1px, just to make sure we have enough space
+      }
+    }
+
+    &__marquee {
+      transform: unset;
+      margin-top: 0;
+      background-color: $black;
+    }
+
+    &__content {
+      max-width: 100%;
+      background: $black;
+
+
+      .video-html-video {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          top: 0;
+          right: -1px;
+          left: 0;
+          height: 100%;
+          content: '';
+          background: $gradient-image-rev;
+        }
+      }
+    }
+
+    &__container {
+      @include grid-wrapper;
+
+      @include mq('tablet') {
+        margin-bottom: 60px;
+      }
+    }
+
+    &__tag {
+      position: absolute;
+      z-index: z('content');
+      display: inline-block;
+      width: auto;
+
+      h2 {
+        display: inline-block;
+        font-size: 2.8rem;
+        line-height: 100%;
+        text-transform: uppercase;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__scroll-container {
+    &--overflow {
+      overflow-y: scroll;
+      height: 100vh;
+    }
+  }
+
+  &__flavors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__button {
+      width: 64px;
+      height: 64px;
+      border: 2px solid $color-secondary;
+      border-radius: 50%;
+      background: $white;
+
+      &:not(last-child) {
+        margin-right: $grid-inner-gutter--mobile;
+      }
+    }
+  }
+
+  &__award {
+    @include grid-wrapper(('tablet', 'desktop', 'desktop-wide'));
+    @include mq('tablet') {
+      display: flex;
+    }
+
+    &__image {
+      width: 100%;
+    }
+
+    &__text {
+      @include grid-wrapper(('mobile', 'tablet-small'));
+      margin-top: 24px;
+      @include mq('tablet') {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+// ThreeJS Stuff, can be refactored later
+.home__scene {
+  position: fixed;
+  z-index: z('content');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  overflow-x: hidden;
+  top: -2vh;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  opacity: 1;
+  transition: opacity .32s linear;
+
+  @include mq('tablet-small') {
+    top: 0;
+  }
+
+  &--hidden {
+    opacity: 0;
+    transition: opacity .32s linear;
+  }
+}
+
+.gyrotest {
+  position: fixed;
+  z-index: z('modal');
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  background: $white;
+}
+
+.stats {
+  position: fixed;
+  z-index: z('modal');
+  top: 0;
+  left: 0;
+  background: $white;
+}

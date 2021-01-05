@@ -1,0 +1,340 @@
+.athlete-teaser {
+
+  &__video {
+    position: relative;
+    z-index: z('bg');
+    overflow: hidden;
+    width: 100%;
+    height: 56.25vw; // fallback for vmax
+    height: 35vmax;
+
+
+    video {
+      position: absolute;
+      z-index: z('bg');
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &__bg {
+      position: relative;
+      z-index: z('below-content');
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $gradient-image;
+    }
+  }
+
+  &__container {
+    @include grid-wrapper;
+    z-index: z('below-content');
+    padding-bottom: 32px;
+
+    @include mq('tablet-small') {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding-bottom: 100px;
+    }
+
+  }
+
+  &__card {
+    @include grid-element-inline(1, 2, 2, 3, 3);
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+    height: calc(100vw / 1.2);
+    padding: $grid-inner-gutter--mobile;
+    border-radius: 5px;
+
+    &:not(:last-of-type) {
+      margin-bottom: $grid-outer-gutter--mobile;
+    }
+
+    &:hover {
+      .athlete-teaser__card__bg {
+        transform: scale(1.06);
+        transition: transform .32s ease-out;
+      }
+    }
+
+    @include mq('tablet-small') {
+      max-height: grid-el-tab-absolute(6);
+    }
+
+    @include mq('tabletl') {
+      max-height: grid-el-tab-absolute(4);
+    }
+
+    @include mq('desktop') {
+      max-height: grid-el-dtp-absolute(4);
+    }
+
+    @include mq('desktop-wide') {
+      max-height: grid-el-dtp-absolute(3);
+    }
+
+    &__label {
+      @include type-s;
+      position: absolute;
+      z-index: z('content');
+      top: 12px;
+      right: 12px;
+      padding: 6px 12px;
+      border-radius: 32px;
+      color: $black;
+      background: $color-white-opacity;
+    }
+
+    &__bg {
+      position: absolute;
+      z-index: z('bg');
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform .16s linear;
+      object-fit: cover;
+      object-position: center;
+
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        height: auto;
+        min-height: 100%;
+      }
+    }
+
+    &__overlay {
+      position: absolute;
+      z-index: z('below-content');
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $gradient-image;
+    }
+
+    &__info {
+      z-index: z('content');
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        @include type-card-headline;
+        margin-block-end: .5rem;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+        border-radius: 50%;
+      }
+    }
+
+    &__quote {
+      @include type-reg;
+      z-index: z('content');
+      color: $color-secondary;
+      margin-block-end: 1rem;
+    }
+  }
+
+}
+
+.athlete {
+  &__container {
+    position: relative;
+    z-index: z('content');
+  }
+
+  &__content {
+    @include grid-wrapper;
+
+    &--name {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__title__card {
+    display: flex;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+
+    transform: skewY(-#{$skewer-angle});
+    transform-origin: bottom left;
+    line-height: 100%;
+    text-transform: uppercase;
+
+
+    &__wrapper {
+      @include grid-wrapper;
+      position: absolute;
+      z-index: z('site-body-above');
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      bottom: 2.2rem;
+
+      margin-block-end: 2.32rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-smooth: always;
+    }
+  }
+
+  &__thumbnail {
+    position: relative;
+    z-index: z('content');
+    width: 72px;
+    height: 72px;
+    margin-right: 12px;
+    border-radius: 50%;
+
+    @include mq('tablet-small') {
+      width: 86px;
+      height: 86px;
+    }
+
+    @include mq('tablet') {
+      width: 120px;
+      height: 120px;
+    }
+
+  }
+
+  &__interview {
+    @include grid-wrapper;
+    position: relative;
+    z-index: z('content');
+    transform: translateY(-6vw);
+    margin: 24vw 0 calc(8vw + 64px);
+    padding-top: 64px;
+    padding-bottom: 0;
+    background: $color-bg-dark;
+
+    @include mq('desktop') {
+      margin: 24vw 0 calc(8vw + 80px);
+    }
+
+    &::before {
+      position: absolute;
+      z-index: -1;
+      top: -16.5vw;
+      right: 0;
+      transform: skewY(-8deg);
+      transform-origin: top right;
+      width: 100%;
+      border-bottom: 16.5vw solid $color-bg-dark;
+      border-image: $color-bg-dark;
+      border-image-width: 100%;
+      content: '';
+    }
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      bottom: -16.5vw;
+      transform: skewY(-8deg);
+      transform-origin: bottom left;
+      width: 100%;
+      border-bottom: 16.5vw solid $color-bg-dark;
+      border-image: $color-bg-dark;
+      border-image-width: 100%;
+      content: '';
+    }
+
+    &__block {
+      margin-bottom: 48px;
+
+      @include mq('desktop') {
+        margin-bottom: 64px;
+      }
+
+      &:last-child {
+        margin-bottom: unset;
+      }
+
+      p {
+        margin-block-end: 1rem;
+
+        &:last-child {
+          margin-block-end: 0;
+        }
+      }
+    }
+
+    &__edge {
+      position: absolute;
+      left: 0;
+      transform: skewY(-8deg);
+      width: 100%;
+      height: 100px;
+      background-image: url('https://static-cdn.neoh.com/images/ripped-paper-black.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+
+      @include mq('desktop') {
+        background-repeat: repeat-x;
+        background-size: 50%;
+      }
+
+      &--top {
+        top: -16.5vw;
+        transform-origin: top right;
+
+        //img {
+        //  @include image-fit;
+        //}
+
+        &::before {
+          position: absolute;
+          z-index: z('bg');
+          top: -1px;
+          left: 0;
+          width: 100%;
+          border-top: 1.5px solid $black;
+          content: "";
+        }
+      }
+
+      &--bottom {
+        bottom: -9.5vw;
+        transform: skewY(-8deg) rotate(180deg);
+        transform-origin: center;
+
+        &::before {
+          position: absolute;
+          z-index: z('bg');
+          top: -1px;
+          left: 0;
+          width: 100%;
+          border-top: 2px solid $black;
+          content: "";
+        }
+      }
+    }
+  }
+
+  &__video {
+    @include grid-wrapper;
+  }
+}

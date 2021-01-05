@@ -1,0 +1,56 @@
+.taster {
+  &__main-dropdown {
+    width: 80%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding-top: 3.5rem;
+  }
+
+  &__sticker {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 10px;
+    left: $grid-outer-gutter--mobile;
+    width: 90px;
+    height: 90px;
+    padding: 6px;
+    border-radius: 50%;
+    background-color: $color-primary;
+
+    @include mq('tablet') {
+      top: calc(#{$logo-height-tablet + $nav-padding-top + $nav-padding-bottom} + 3rem);
+      right: $grid-outer-gutter--tablet;
+      bottom: unset;
+      left: unset;
+      width: 120px;
+      height: 120px;
+    }
+
+    @include mq('desktop') {
+      top: calc(#{$logo-height-tablet + $nav-padding-top + $nav-padding-bottom} + 4rem);
+      right: $grid-outer-gutter--desktop;
+    }
+
+    @include mq('desktop-wide') {
+      right: $grid-outer-gutter--desktop-wide;
+    }
+
+    p {
+      @include font-primary;
+      transform: rotate(#{$skewer-angle});
+      width: 80%;
+      margin: 0 auto;
+      font-size: 15px;
+      line-height: 132%;
+      text-align: center;
+      color: $white;
+      margin-block-end: 0;
+
+      @include mq('tablet') {
+        font-size: 16px;
+      }
+    }
+  }
+}

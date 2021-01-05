@@ -1,0 +1,29 @@
+.neohpedia {
+
+  &__hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vw;
+    min-height: 320px;
+    background: $color-bg-dark;
+
+    @include mq('tablet-small') {
+      height: 50vh;
+    }
+
+    img {
+      @include image-fit;
+    }
+
+    &--detail {
+      overflow: hidden;
+
+      img {
+        @include image-fit;
+      }
+    }
+  }
+}

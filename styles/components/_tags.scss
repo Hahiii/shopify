@@ -1,0 +1,26 @@
+.tag-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+
+  &--align-right {
+    justify-content: flex-end;
+  }
+}
+
+.tag {
+  @include type-s;
+  margin: 8px 8px 0 0;
+  padding: 4px 8px;
+  border-radius: 6px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include mq('tablet') {
+    margin: 12px 12px 0 0;
+  }
+}

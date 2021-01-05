@@ -1,0 +1,66 @@
+// Generic Vue Transition Classes
+.fade-in-enter-active,
+.fade-in-leave-active {
+  transition: opacity .24s;
+}
+
+.fade-in-enter,
+.fade-in-leave-to {
+  opacity: 0;
+}
+
+.fade-in-up-enter-active,
+.fade-in-up-leave-active {
+  transition: opacity .36s, transform .48s;
+}
+
+.fade-in-up-enter,
+.fade-in-up-leave-to {
+  transform: translateY(48px);
+  opacity: 0;
+}
+
+// Swup Animation Classes
+.is-leaving {
+
+  //.swup-recipe-image {
+  //  width: 100%;
+  //  height: calc(100vw / 16 * 9);
+  //  transition: height .32s linear;
+  //}
+  //
+  //.swup-recipe-excerpt {
+  //  opacity: 0;
+  //  transition: opacity .32s linear;
+  //}
+  //
+  //.recipe-teaser__text {
+  //  top: calc(100vw / 16 * 9 - 2.14rem);
+  //  transition: top .16s linear;
+  //}
+}
+
+.swiper-slide-prev,
+.swiper-slide-next {
+
+  .recipe-teaser__text {
+    opacity: 0;
+    transition: opacity .16s linear;
+
+    @include mq('tablet') {
+      opacity: 1;
+    }
+  }
+}
+
+
+@include keyframes('float') {
+  from {
+    transform: translateY(0px);
+    //transform: perspective(400px) rotate3d(0.6, 0.22, 0.64, 0turn);
+  }
+  to {
+    transform: translateY(100px);
+    //transform: perspective(400px) translate3d(16px, 12px, -10px) rotate3d(-0.1069, 0.42, -0.874615, -0.038turn) skewY(-4deg);
+  }
+}
